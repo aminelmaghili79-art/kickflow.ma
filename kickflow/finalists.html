@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kick Flow - Finalists (Polished)</title>
+
+  <!-- Font + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#060608;
+      --card:#0f0f11;
+      --muted:#bfbfbf;
+      --accent:#ff8a00;
+      --accent-2:#ff2e2e;
+      --glass: rgba(255,255,255,0.03);
+      --radius:18px;
+      --gap:20px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,Segoe UI,Arial;
+      background:
+        radial-gradient(1200px 400px at 10% 10%, rgba(255,138,0,0.04), transparent 10%),
+        radial-gradient(800px 300px at 90% 90%, rgba(255,46,46,0.03), transparent 10%),
+        var(--bg);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+    }
+
+    /* Top nav */
+    nav{
+      max-width:1200px;
+      margin:0 auto 28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 16px;
+      background: linear-gradient(180deg, rgba(32, 11, 1, 0.418), rgba(255,255,255,0.01));
+      border-radius:999px;
+      box-shadow:0 6px 24px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand .logo{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:none;
+    }
+    .brand .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    nav .links{display:flex;gap:12px;align-items:center}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:12px;
+      font-weight:600;
+      transition:all .18s ease;
+      font-size:0.95rem;
+    }
+    nav a:hover{ color:white; background:var(--glass); transform:translateY(-3px) }
+    nav a.active{ background:rgba(255,255,255,0.08); color:white }
+
+    /* Header */
+    .header{
+      max-width:1200px;
+      margin:10px auto 26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .header h1{
+      margin:0;
+      font-size:1.6rem;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:white;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .header p{ margin:0; color:var(--muted) }
+
+    /* Grid of cards */
+    .grid{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:var(--gap);
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(32, 11, 1, 0.418), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .card:hover{
+      transform:translateY(-12px) scale(1.01);
+      box-shadow:0 26px 50px rgba(0,0,0,0.7);
+    }
+
+    .avatar{
+      width:108px;
+      height:108px;
+      border-radius:50%;
+      overflow:hidden;
+      border:3px solid rgba(255,255,255,0.06);
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));
+    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block }
+
+    .name{ margin-top:6px; font-weight:700; font-size:1.05rem; text-align:center; }
+    .role{ font-size:0.88rem; color:var(--muted); margin-bottom:6px; }
+
+    .badges{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; margin-bottom:8px; }
+    .badge{ background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; font-size:0.78rem; color:var(--muted); border:1px solid rgba(255,255,255,0.02); }
+
+    .socials{ display:flex; gap:10px; margin-top:6px; }
+    .socials a{
+      display:inline-grid; place-items:center; width:44px; height:44px;
+      border-radius:10px; text-decoration:none; color:white; font-size:1.05rem;
+      transition:transform .18s, box-shadow .18s, background .18s;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .socials a:hover{ transform:translateY(-6px); box-shadow:0 8px 20px rgba(0,0,0,0.6); }
+    .socials .yt{ background: linear-gradient(180deg, rgba(255,0,0,0.12), rgba(255,0,0,0.04)); }
+    .socials .ig{ background: linear-gradient(180deg, rgba(206, 28, 129, 0.08), rgba(193,53,132,0.03)); }
+    .socials .sp{ background: linear-gradient(180deg, rgba(0, 255, 89, 0.06), rgba(30,215,96,0.03)); }
+    .socials .kick{ background: linear-gradient(180deg, rgba(0,255,153,0.08), rgba(0,204,136,0.03)); color:#000 }
+
+    @media (max-width:560px){
+      nav{ flex-direction:column; align-items:flex-start }
+      .header{ flex-direction:column; align-items:flex-start }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="brand">
+      <div class="logo">
+        <img src="https://cdn.discordapp.com/attachments/1424504456061653073/1428817833348960328/png.png?ex=68f3e1cd&is=68f2904d&hm=6cbd8a2007bf16eb3abb67c5e7a12b2456b71528ad2dfe6bb740faa4429794c4&" />
+      </div>
+      <div>
+        <div style="font-weight:700">Kick Flow</div>
+        <div style="font-size:0.78rem;color:var(--muted)">Finalists Battle</div>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="organizers.html">Organizers</a>
+      <a href="finalists.html" style="background:rgba(255,255,255,0.03);color:#fff">Finalists</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header class="header">
+    <div>
+      <h1>Kick Flow Finalists 🎤</h1>
+      <p>Meet the talented finalists — click on their profiles to explore more!</p>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- Finalist 1 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/Y04b4234Xhtkk9xnaSPIyVx9bVNrNZKOzC_e0NDCqtyiXcYjqvb9ohdqwpENKy2gGWZJ4d1SCw=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">Vega</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@vega5449" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/vega_moncef/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+    <!-- Finalist 2 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/1OdgsPBeO_drRsenHA87e0x_iQ52qVVWT2XIhGyNHKnwUZlfC7ZpIeIbZHSOhUSc5bti20Ns=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">BADDFOX</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/intl-fr/artist/4ndoh7kBuC86wEpuAUXoVJ?si=8SCMcfV7QbixNRzaZ0eF8w" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@BADFOXOFF" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/badfoxiginal/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+    <!-- Finalist 3 -->
+    <article class="card">
+      <div class="avatar"><img src="https://i.ibb.co/KpJJ5hfY/2025-10-15-151344.png"></div>
+      <div class="name">Holdy</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@Holdyart" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/holdy.art" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+
+    </article>
+
+    <!-- Finalist 4 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/cGAzsXRel049TAfPcCo3uow_r6qrlurHwrm5bo8twBsEBb2naO0LfgqOoj0mqoYw_fBrYq0JTw=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">The real surgame</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/intl-fr/artist/2wLDGHyySJG4bYDIDDrx39?si=KVgLkgyTR7STl7SGOjUlpA" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@Suurgam_music00" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/suurgam_music" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+
+    <!-- Finalist 5 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/eHJxBCX5qCpc48TtfYYJdnPn893V1jPJfih-SvBm32_RGkFlQqYOGScth-6GIFcSnBaw7hS4K0o=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">BIG A</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/intl-fr/artist/6Yu5vFbKxe1LY1IstdHNND?si=nikU2wc7QKK-p0pvf5UNzQ" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@BIG_A_off" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/big_a_baby/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+
+    <!-- Finalist 6 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/Z4ori-shUcQBEibBmlDOOp0aMHnQpTi1PH4KIxQhcqdMR0hUep28PnKMbRfHOFVTwhCUNH1WDQ=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">HasH</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/user/31jihr3fegkhznpfzd2ew365l5k4?si=8a813ee9b6ad40a9" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@Real-HASH" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/thehvsh/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+
+    <!-- Finalist 7 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/-u6VDRSFpEQJNFQ4WqAbOM7o1kZ0j_YlNKIBjly-ziKUDwnvnJNKaD9CijOLCEH_YkUQX3QG=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">Koga</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/intl-fr/artist/0sUMVprdQBpkMdM2C95gyk?si=d6PyCKaGSi-UiO_YwrVLLA" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@koga1377" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/koga_uvc/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+
+
+    <!-- Finalist 8 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/MH-OaU2Bv4Z_eyE8lOsCXvkyeea_PvfZGiI8x4JJW5_0FiaX-Kv-ZkFwm4kx2I-AYCPEGavsnw=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">Mirvvvvvvvvvvv48</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/intl-fr/artist/2ORmu3PJ825VSiXknGy6Ma?si=ohWZSXBXTumD7OINdKBYng" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@MIRV48Music" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/mirv48/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+
+
+    <!-- Finalist 9 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/K0wcNq-CFkbQsoA23zcrl8B8KAl05zC7xjMHy-QUFw1_V800hVeDwi9Z7PIVK7S0vaJTAZGX3eQ=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">P.h_41</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/intl-fr/artist/0vLIzPuOP0lzN7KMe09KcU" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@pharaon_ph.41" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/ph_41_/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+
+    <!-- Finalist 10 -->
+    <article class="card">
+      <div class="avatar"><img src="https://yt3.googleusercontent.com/r0nKeK6NJXXyPar90ff8cFn7cWpaDU7DJEmOTJggFRwNzwwEm38g0WjKvnjW5I7krHTMkPDCRQ=s120-c-k-c0x00ffffff-no-rj"></div>
+      <div class="name">MARADES</div>
+      <div class="role">Finalist</div>
+      <div class="badges"><span class="badge">Finalist</span><span class="badge">kickflow 2025</span><span class="badge">hades</span><span class="badge">umar</span></div>
+      <div class="socials">
+        <a class="sp" title="Spotify" href="https://open.spotify.com/intl-fr/artist/2stpb15IoHc6sMa953fXTP?si=usmaUbM4QNiE5KDpHkLCqQ" target="_blank" rel="noopener"><i class="fab fa-spotify"></i></a>
+        <a class="yt" title="YouTube" href="https://www.youtube.com/@MARADES" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/hades1sm/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a class="ig" title="Instagram" href="https://www.instagram.com/umar_elk/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+      </div>
+    </article>
+
+  </main>
+
+  <footer style="max-width:1200px;margin:36px auto 0;color:var(--muted);text-align:center;font-size:0.9rem">
+    © 2025 Kick Flow | Finalists Page — Designed By FDI TEAM ❤️
+  </footer>
+
+</body>
+</html>

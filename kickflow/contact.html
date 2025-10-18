@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kick Flow - Contact</title>
+
+  <!-- Font + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#060608;
+      --card:#0f0f11;
+      --muted:#bfbfbf;
+      --accent:#ff8a00;
+      --accent-2:#ff2e2e;
+      --glass: rgba(0, 0, 0, 0.03);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,Segoe UI,Arial;
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+        url("https://media.discordapp.net/attachments/1427114251444817990/1428101370673627146/IMG_1704.png?ex=68f340cb&is=68f1ef4b&hm=84f911e10a3be0fb1ac127fb614c47b07f3af9641b456ecfd55bc47fc258cf1b&=&format=webp&quality=lossless&width=706&height=447") no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    /* Top nav */
+    nav{
+      max-width:1200px;
+      margin:0 auto 28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 16px;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+      border-radius:999px;
+      box-shadow:0 6px 24px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand .logo{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      background:url("https://i.ibb.co/Dg55qLj9/IMG-1704.png") no-repeat center/cover;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      box-shadow:0 6px 18px rgba(255,138,0,0.3);
+    }
+    nav .links{display:flex;gap:12px;align-items:center}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:12px;
+      font-weight:600;
+      transition:all .18s ease;
+      font-size:0.95rem;
+    }
+    nav a:hover{ color:white; background:var(--glass); transform:translateY(-3px) }
+    nav a.active{ background:rgba(255,255,255,0.08); color:white }
+
+    /* Contact section */
+    .contact-container{
+      max-width:800px;
+      margin:60px auto;
+      text-align:center;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(12px);
+      padding:40px;
+      border-radius:var(--radius);
+      box-shadow:0 10px 40px rgba(0,0,0,0.7);
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-container h1{
+      font-size:2rem;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      color:white;
+      letter-spacing:2px;
+    }
+
+    .contact-container p{
+      color:var(--muted);
+      font-size:1rem;
+      margin:8px 0 20px;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      margin-top:30px;
+    }
+
+    .socials a{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      width:70px;
+      height:70px;
+      border-radius:14px;
+      text-decoration:none;
+      color:white;
+      font-size:1.6rem;
+      transition:transform .2s, box-shadow .2s;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+    }
+    .socials a:hover{
+      transform:translateY(-6px);
+      box-shadow:0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    /* ألوان مختلفة لكل Discord */
+    .dc1 { background: linear-gradient(180deg, rgba(88,101,242,0.15), rgba(88,101,242,0.05)); color:#7289DA; }
+    .dc2 { background: linear-gradient(180deg, rgba(0,255,150,0.12), rgba(0,255,150,0.05)); color:#00FF99; }
+    .dc3 { background: linear-gradient(180deg, rgba(255,0,100,0.12), rgba(255,0,100,0.05)); color:#FF3366; }
+    .dc4 { background: linear-gradient(180deg, rgba(255,200,0,0.12), rgba(255,200,0,0.05)); color:#FFD700; }
+
+    .socials .ig{ background: linear-gradient(180deg, rgba(193,53,132,0.1), rgba(193,53,132,0.04)); color:#fff }
+    .socials .sp{ background: linear-gradient(180deg, rgba(30,215,96,0.08), rgba(30,215,96,0.04)); color:#1ED760 }
+
+    .server-name {
+      font-size: 0.8rem;
+      color: #fff;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    /* Kick button */
+    .kick-btn {
+      display:inline-block;
+      margin-top:40px;
+      padding:14px 40px;
+      background:linear-gradient(135deg, #00ff99, #00cc88);
+      color:#000;
+      font-weight:700;
+      font-size:1.1rem;
+      text-decoration:none;
+      border-radius:30px;
+      box-shadow:0 8px 20px rgba(0,255,150,0.25);
+      transition:all 0.3s ease;
+    }
+    .kick-btn:hover{
+      transform:translateY(-4px) scale(1.05);
+      box-shadow:0 10px 25px rgba(0,255,150,0.4);
+      background:linear-gradient(135deg, #00ffb3, #00e695);
+    }
+
+    footer{
+      margin-top:auto;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.9rem;
+      padding-top:20px;
+    }
+
+    @media(max-width:560px){
+      nav{ flex-direction:column; gap:8px; align-items:flex-start }
+      .socials a{ width:60px; height:60px; font-size:1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <div style="font-weight:700">Kick Flow</div>
+        <div style="font-size:0.78rem;color:var(--muted)">Organizers & Competitors</div>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="organizers.html">Organizers</a>
+      <a href="finalists.html">Finalists</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Contact section -->
+  <section class="contact-container">
+    <h1><strong>About Event</strong></h1>
+    <p><strong>KickFlow</strong> is a new rap and streaming event organized by <strong>VodkaFunky</strong>. In this first edition, rappers compete for a <strong>50000 MAD</strong> prize, judged by top Moroccan <strong>streamers and rappers</strong> like <strong>Draganov</strong> , <strong>Demon</strong> , <strong>ilyas elmaliki</strong> , <strong>bougassaa</strong> , <strong>nahoule82k</strong>. It’s a fresh mix of music and streaming culture in <strong>Morocco</strong>.</p>
+    <p>Kickflow Team - All Rights Reserved © 2025</p>
+
+    <div class="socials">
+      <a href="https://discord.gg/UBfS9EGXNv" class="dc1" target="_blank">
+        <i class="fab fa-discord"></i>
+        <div class="server-name">VODKA CASINO</div>
+      </a>
+
+      <a href="https://discord.gg/pdmjpjkURc" class="dc2" target="_blank">
+        <i class="fab fa-discord"></i>
+        <div class="server-name">Bobony family</div>
+      </a>
+
+      <a href="https://discord.gg/utkEeNSbEg" class="dc3" target="_blank">
+        <i class="fab fa-discord"></i>
+        <div class="server-name">KICK FLOW</div>
+      </a>
+
+      <a href="https://www.instagram.com/vfunky1/" class="ig" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+
+    <!-- Kick button -->
+    <a href="https://kick.com/vodkafunky" target="_blank" class="kick-btn">
+      <i class="fa-brands fa-kickstarter"></i> Visit Kick
+    </a>
+  </section>
+
+  <footer>
+    Designed by <strong>FDI TEAM ❤️</strong>
+  </footer>
+
+</body>
+</html>

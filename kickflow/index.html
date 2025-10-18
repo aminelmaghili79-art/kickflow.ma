@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kick Flow - Welcome</title>
+  <style>
+    /* إعداد عام */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      background: 
+        linear-gradient(rgba(184, 24, 24, 0.35), rgba(0, 0, 0, 0.35)),
+        url("https://i.ibb.co/Dg55qLj9/IMG-1704.png") no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #d3c9c9;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #ffcc00;
+      text-shadow: 0 0 25px #000000, 0 0 50px #ff6600;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1.2s ease forwards;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #ffffff;
+      margin-bottom: 60px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    button {
+      background: linear-gradient(90deg, #990606, #ff6600);
+      border: none;
+      color: white;
+      padding: 18px 55px;
+      font-size: 1.3rem;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255,0,0,0.8);
+      transition: 0.3s ease;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      animation: pulse 2s infinite;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(255,150,0,1);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9rem;
+      color: #ddd;
+      letter-spacing: 1px;
+    }
+
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 15px rgba(255,0,0,0.7); }
+      50% { box-shadow: 0 0 35px rgba(255,150,0,1); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to KickFlow </h1>
+  <h2>The Ultimate Rap Battle Experience</h2>
+  <button onclick="window.location.href='organizers.html'">Enter the Event</button>
+
+  <footer>© 2025 Kick Flow. All Rights Reserved.FDI TEAM</footer>
+</body>
+</html>
